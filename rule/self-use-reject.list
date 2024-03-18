@@ -1,0 +1,8 @@
+# REJECT REJECT REJECT
+
+# mac上qq的接口并发调用很频繁，不知道在搞什么幺蛾子，禁用目前看来无害
+DOMAIN,access-sngapm.qcloud.com
+
+# 逆向工具破解
+DOMAIN-SUFFIX,www.hopperapp.com
+DOMAIN-SUFFIX,hopperapp.com
