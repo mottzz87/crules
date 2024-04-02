@@ -6,3 +6,7 @@ DOMAIN,access-sngapm.qcloud.com
 # 逆向工具破解
 DOMAIN-SUFFIX,www.hopperapp.com
 DOMAIN-SUFFIX,hopperapp.com
+
+# QSpace
+DOMAIN,qspace.awehunt.com
+
