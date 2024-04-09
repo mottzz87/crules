@@ -8,3 +8,6 @@ DOMAIN,secure.fundsupermart.com
 DOMAIN-SUFFIX,fsmone.com
 # OCBC SGP 
 DOMAIN-SUFFIX,ocbc.com
+
+# —————————————>>> Esim <<<—————————————
+DOMAIN-SUFFIX,one.nz
