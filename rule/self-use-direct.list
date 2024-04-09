@@ -6,13 +6,3 @@ DOMAIN-SUFFIX,spaceship.com
 DOMAIN-SUFFIX,macked.app
 DOMAIN-SUFFIX,anyfastcloud.com
 
-# —————————————>>> Finance <<<—————————————
-
-# Ifast gb
-DOMAIN-KEYWORD,ifastgb
-DOMAIN,secure.fundsupermart.com
-# OCBC SGP 
-DOMAIN-SUFFIX,ocbc.com
-# WISE 
-#DOMAIN,api.authy.com
-#DOMAIN-KEYWORD,wise
