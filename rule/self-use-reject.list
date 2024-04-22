@@ -10,3 +10,6 @@ DOMAIN-SUFFIX,hopperapp.com
 # QSpace
 #DOMAIN,qspace.awehunt.com
 
+# Adguard
+DOMAIN-SUFFIX,adguard.com
+
