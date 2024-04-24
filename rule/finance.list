@@ -11,6 +11,8 @@ DOMAIN-SUFFIX,ocbc.com
 # Ibkr
 DOMAIN-SUFFIX,interactivebrokers.com
 DOMAIN-SUFFIX,ibkr.com
+# Trading212
+DOMAIN-SUFFIX,trading212.com
 
 # —————————————>>> Esim <<<—————————————
 DOMAIN-SUFFIX,one.nz
