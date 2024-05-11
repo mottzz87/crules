@@ -4,12 +4,12 @@
 DOMAIN,access-sngapm.qcloud.com
 
 # 逆向工具破解
-DOMAIN-SUFFIX,www.hopperapp.com
-DOMAIN-SUFFIX,hopperapp.com
+DOMAIN-SUFFIX,www.hopperapp.com 
+DOMAIN-SUFFIX,hopperapp.com 
 
 # QSpace
 #DOMAIN,qspace.awehunt.com
 
-# Adguard
-# DOMAIN-SUFFIX,adguard.com
-
+# 百度统计
+DOMAIN, hm.baidu.com 
+DOMAIN-SUFFIX, otheve.beacon.qq.com 
