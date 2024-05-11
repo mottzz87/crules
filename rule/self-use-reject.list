@@ -16,4 +16,36 @@ DOMAIN,tongji.baidu.com
 # 头条
 DOMAIN,mcs.snssdk.com
 
-DOMAIN-SUFFIX,otheve.beacon.qq.com 
+DOMAIN-SUFFIX,otheve.beacon.qq.com
+
+
+# 杂项
+#字节
+DOMAIN,p6-ad-sign.byteimg.com
+DOMAIN,p9-ad-sign.byteimg.com
+DOMAIN,dig.bdurl.ne
+DOMAIN,ads3-normal-lq.zijieapi.com
+DOMAIN,ads5-normal-lq.zijieapi.com
+DOMAIN,polaris3-normal-lq.zijieapi.com
+DOMAIN,activity-ag.awemeughun.com
+
+DOMAIN,tnc3-alisc1.snssdk.com
+DOMAIN,security-lq.snssdk.com
+DOMAIN,tnc3-aliec2.snssdk.com
+DOMAIN,is.snssdk.com
+
+DOMAIN,msync-im1-vip6-std.easemob.com
+DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
+DOMAIN,api.iegadp.qq.com
+
+DOMAIN,sf3-ttcdn-tos.pstatp.com
+DOMAIN-SUFFIX,pglstatp-toutiao.com
+DOMAIN,p3-be-pack-sign.pglstatp-toutiao.com
+DOMAIN,sf3-be-pack.pglstatp-toutiao.com
+
+
+URL-REGEX,*-default.ixigua.com
+URL-REGEX,.+web\.business\.image
+URL-REGEX,^http:\/\/.+\.byteimg\.com\/ad-app-package
+URL-REGEX,^http:\/\/.+\.byteimg\.com\/web\.business\.image
+
