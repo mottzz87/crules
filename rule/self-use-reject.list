@@ -11,5 +11,9 @@ DOMAIN-SUFFIX,hopperapp.com 
 #DOMAIN,qspace.awehunt.com
 
 # 百度统计
-DOMAIN, hm.baidu.com 
-DOMAIN-SUFFIX, otheve.beacon.qq.com 
+DOMAIN,hm.baidu.com 
+DOMAIN,tongji.baidu.com
+# 头条
+DOMAIN,mcs.snssdk.com
+
+DOMAIN-SUFFIX,otheve.beacon.qq.com 
