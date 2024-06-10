@@ -5,5 +5,5 @@ DOMAIN-SUFFIX,duckyci.com
 DOMAIN-KEYWORD,spaceship
 DOMAIN-KEYWORD,macked
 DOMAIN-KEYWORD,anyfastcloud
-DOMAIN-SUFFIX,boc.com
 DOMAIN-SUFFIX,bochk.com
+DOMAIN-SUFFIX,boc.bochk.com:443
