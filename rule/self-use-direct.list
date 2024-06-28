@@ -4,8 +4,10 @@ DOMAIN-SUFFIX,macapp.org.cn
 DOMAIN-SUFFIX,duckyci.com
 DOMAIN-KEYWORD,spaceship
 DOMAIN-KEYWORD,macked
+DOMAIN-SUFFIX,trip.com
 
 #bank
 DOMAIN-KEYWORD,anyfastcloud
 DOMAIN-SUFFIX,bochk.com
 DOMAIN-SUFFIX,cmbwinglungbank.com
+
