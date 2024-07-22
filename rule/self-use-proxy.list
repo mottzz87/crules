@@ -1,3 +1,5 @@
 DOMAIN-KEYWORD,leonardo
 #talkatone接口直连超时
 DOMAIN-SUFFIX,tktn.be
+
+DOMAIN-SUFFIX,v2ex.com
