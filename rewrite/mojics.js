@@ -18,7 +18,7 @@ const url = $request.url
 const vip = '/getNPrivileges-v2'
 const vip1 = '/getNPrivileges'
 const vip2 = '/getUserAsset'
-if(url.includes(vip2)){
+if(url.indexOf(vip2) != -1){
   chxm1023.result = {
     result: {
         "userId": "NnEJUH8eHT",
