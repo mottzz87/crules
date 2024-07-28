@@ -33,7 +33,6 @@ if (url.indexOf(vip2) != -1) {
     code: 200,
   }
   $done({ body: JSON.stringify(chxm1023) })
-  return
 } else if (url.indexOf(vip) != -1) {
   chxm1023.result = {
     result:
