@@ -6,7 +6,7 @@
 **************************************
 
 [rewrite_local]
-^https:\/\/api\.mojidict\.com\/app\/mojiread\/parse\/functions\/getNPrivileges url script-response-body https://raw.githubusercontent.com/mottzz87/crules/main/module/rewrite/mojitest.js
+^https:\/\/api\.mojidict\.com\/app\/mojiread\/parse\/functions\/getNPrivileges url script-response-body https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/mojitest.js
 
 [mitm]
 hostname = api.mojidict.com
