@@ -21,17 +21,19 @@ const vip2 = '/getUserAsset'
 if (url.indexOf(vip2) != -1) {
   chxm1023.result = {
     result: {
-      userId: 'NnEJUH8eHT',
+      userId: '4wgT43THLm',
       asset: {
-        mo_point: 9999999999999,
-        mo_coin: 9999999999999,
-        cash_wallet: 9999999999999,
+        mo_point: 200,
+        mo_coin: 200,
+        cash_wallet: 200,
       },
-      quota: 9999999999999,
+      quota: 2000,
       moCoin_rate_of_quota: 50,
     },
     code: 200,
   }
+  $done({ body: JSON.stringify(chxm1023) })
+  return
 } else if (url.indexOf(vip) != -1) {
   chxm1023.result = {
     result:
