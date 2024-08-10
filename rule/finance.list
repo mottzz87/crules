@@ -13,7 +13,7 @@ DOMAIN-SUFFIX,ocbc.com
 DOMAIN-SUFFIX,interactivebrokers.com
 DOMAIN-SUFFIX,ibkr.com
 # Trading212
-DOMAIN-SUFFIX,trading212.com
+# DOMAIN-SUFFIX,trading212.com
 # moomoo
 DOMAIN-SUFFIX,moomoo.com
 # —————————————>>> Esim <<<—————————————
