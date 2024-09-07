@@ -5,7 +5,14 @@
     console.log('原始响应体：', JSON.stringify(originalBody))
 
     let modifiedResponse = {
+      status: {
+        type: 'OK',
+        subtype: null,
+        message: null,
+      },
       data: {
+        country: 'TW',
+        ip: '103.36.24.155',
         is_allowed: true,
       },
     }
