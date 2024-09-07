@@ -1,0 +1,8 @@
+#!name=KKTV IP Check Override
+#!desc=Override KKTV IP check response to always return true
+
+[Script]
+KKTV = type=http-request,pattern=^https?:\/\/api\.kktv\.me\/v3\/ipcheck,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/kktv.js
+
+[MITM]
+hostname = %APPEND% api.kktv.me
