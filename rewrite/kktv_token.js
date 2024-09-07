@@ -1,6 +1,6 @@
 ;(() => {
   try {
-    let originalBody = JSON.parse($response.data)
+    let originalBody = JSON.parse($response.body)
     console.log('111：', 111)
     console.log('222：', JSON.stringify({test: 222}))
     console.log('原始响应体：', JSON.stringify(originalBody))
