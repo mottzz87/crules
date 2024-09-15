@@ -3,3 +3,10 @@ DOMAIN-KEYWORD,leonardo
 DOMAIN-SUFFIX,tktn.be
 
 DOMAIN-SUFFIX,v2ex.com
+
+#pikpak绕过地域限制
+DOMAIN-SUFFIX,access.pikpak.me
+DOMAIN-SUFFIX,access.pikpakdrive.com
+DOMAIN-SUFFIX,access.mypikpak.com
+DOMAIN-SUFFIX,access.mypikpak.net
+DOMAIN-SUFFIX,api-drive.mypikpak.com
