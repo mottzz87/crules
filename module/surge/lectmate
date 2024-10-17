@@ -1,8 +1,0 @@
-#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/lectmate.sgmodule
-#!name=Lectmate
-#!desc=有道留学听课宝
-
-[Script]
-Lectmate = type=http-response,pattern=^https:\/\/intervip\.youdao\.com\/api\/verify\/ios-receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/lectmate.js
-
-hostname = %APPEND% intervip.youdao.com
