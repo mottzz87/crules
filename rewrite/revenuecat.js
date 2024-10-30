@@ -233,4 +233,6 @@ if (match) {
   (obj.subscriber.subscriptions['com.ddgksf2013.premium.yearly'] = ddgksf2013),
     (obj.subscriber.entitlements.pro = ddgksf2021),
     console.log('操作成功🎉🎉🎉\nCuttlefishの自留地: https://t.me/ddgksf2021')
+
+console.log(obj)
 $done({ body: JSON.stringify(obj) })
