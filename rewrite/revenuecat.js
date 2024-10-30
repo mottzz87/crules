@@ -200,9 +200,8 @@ const mapping = {
 // =========  @ddgksf2021 ========= //
 var ua = $request.headers['User-Agent'] || $request.headers['user-agent'],
   obj = JSON.parse($response.body)
-
 console.log(obj)
-obj.Attention = '恭喜你！恭喜你！恭喜你！恭喜你！'
+obj.Attention = '恭喜你！'
 var ddgksf2013 = {
     is_sandbox: !1,
     ownership_type: 'PURCHASED',
@@ -211,8 +210,8 @@ var ddgksf2013 = {
     expires_date: '2099-12-18T01:04:17Z',
     grace_period_expires_date: null,
     unsubscribe_detected_at: null,
-    original_purchase_date: '2022-09-08T01:04:18Z',
-    purchase_date: '2022-09-08T01:04:17Z',
+    original_purchase_date: '2024-10-29T07:57:11Z',
+    purchase_date: '2024-10-29T07:57:10Z',
     store: 'app_store',
     refunded_at: null,
     store_transaction_id: 470002171342295,
@@ -220,7 +219,7 @@ var ddgksf2013 = {
   },
   ddgksf2021 = {
     grace_period_expires_date: null,
-    purchase_date: '2022-09-08T01:04:17Z',
+    purchase_date: '2024-10-29T07:57:10Z',
     product_identifier: 'com.ddgksf2013.premium.yearly',
     expires_date: '2099-12-18T01:04:17Z',
   }
@@ -235,4 +234,6 @@ if (match) {
   (obj.subscriber.subscriptions['com.ddgksf2013.premium.yearly'] = ddgksf2013),
     (obj.subscriber.entitlements.pro = ddgksf2021),
     console.log('操作成功🎉🎉🎉\nCuttlefishの自留地: https://t.me/ddgksf2021')
+
 $done({ body: JSON.stringify(obj) })
+
