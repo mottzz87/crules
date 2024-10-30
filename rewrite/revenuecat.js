@@ -201,7 +201,7 @@ const mapping = {
 var ua = $request.headers['User-Agent'] || $request.headers['user-agent'],
   obj = JSON.parse($response.body)
 console.log(obj)
-obj.Attention = '恭喜你！'
+obj.Attention = '恭喜你!!!'
 var ddgksf2013 = {
     is_sandbox: !1,
     ownership_type: 'PURCHASED',
@@ -230,10 +230,18 @@ if (match) {
     ? ((ddgksf2021.product_identifier = s), (obj.subscriber.subscriptions[s] = ddgksf2013))
     : (obj.subscriber.subscriptions['com.ddgksf2013.premium.yearly'] = ddgksf2013),
     (obj.subscriber.entitlements[e] = ddgksf2021)
+} else if (match === 'totowallet') {
+  ddgksf2021.product_identifier = s
+  obj.subscriber.subscriptions[s] = ddgksf2013
+  obj.subscriber.other_purchases = {
+    'com.ziheng.totowallet.onetimepurchase': {
+      purchase_date: '2024-10-22T10:13:23Z',
+    },
+  }
+  obj.subscriber.entitlements[e] = ddgksf2021
 } else
   (obj.subscriber.subscriptions['com.ddgksf2013.premium.yearly'] = ddgksf2013),
     (obj.subscriber.entitlements.pro = ddgksf2021),
     console.log('操作成功🎉🎉🎉\nCuttlefishの自留地: https://t.me/ddgksf2021')
 
 $done({ body: JSON.stringify(obj) })
-
