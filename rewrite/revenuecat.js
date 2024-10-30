@@ -11,7 +11,7 @@
 > Suitable          自行观看“# > ”注释内容，解锁是暂时的，购买也不是永久的[订阅、跑路]
 > Attention         📣个别失效的APP请相关需求者自行降级、或寻找替代品、或购买支持
 > Attention         如需引用请注明出处，谢谢合作！
-> ScriptURL         https://gist.githubusercontent.com/ddgksf2013/dbb1695cd96743eef18f3fac5c6fe227/raw/revenuecat.js
+> ScriptURL         https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/revenuecat.js
 
 
 # ========解锁列表======== #
@@ -20,7 +20,7 @@ https://appraven.net/collection/77299969
 [rewrite_local]
 
 # ～ RevenueCat@ddgksf2013
-^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) url script-response-body https://gist.githubusercontent.com/ddgksf2013/dbb1695cd96743eef18f3fac5c6fe227/raw/revenuecat.js
+^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) url script-response-body https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/revenuecat.js
 ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) url script-request-header https://raw.githubusercontent.com/ddgksf2013/Scripts/master/deleteHeader.js
 
 [mitm]
@@ -200,7 +200,7 @@ const mapping = {
 // =========  @ddgksf2021 ========= //
 var ua = $request.headers['User-Agent'] || $request.headers['user-agent'],
   obj = JSON.parse($response.body)
-obj.Attention = '恭喜你抓到元数据！由墨鱼分享，请勿售卖或分享他人！'
+obj.Attention = '恭喜你！恭喜你！恭喜你！恭喜你！'
 var ddgksf2013 = {
     is_sandbox: !1,
     ownership_type: 'PURCHASED',
