@@ -200,6 +200,8 @@ const mapping = {
 // =========  @ddgksf2021 ========= //
 var ua = $request.headers['User-Agent'] || $request.headers['user-agent'],
   obj = JSON.parse($response.body)
+
+console.log(obj)
 obj.Attention = '恭喜你！恭喜你！恭喜你！恭喜你！'
 var ddgksf2013 = {
     is_sandbox: !1,
@@ -233,6 +235,4 @@ if (match) {
   (obj.subscriber.subscriptions['com.ddgksf2013.premium.yearly'] = ddgksf2013),
     (obj.subscriber.entitlements.pro = ddgksf2021),
     console.log('操作成功🎉🎉🎉\nCuttlefishの自留地: https://t.me/ddgksf2021')
-
-console.log(obj)
 $done({ body: JSON.stringify(obj) })
