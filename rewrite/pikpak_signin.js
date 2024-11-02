@@ -1,6 +1,6 @@
 ;(() => {
   const url = 'https://api-drive.mypikpak.com/vip/v1/activity/rewardVip'
-  const auth = $persistentStore.read('pikpak_auth') // 读取配置的Authorization
+  const auth = $argument // 获取传入的pikpak_auth参数
 
   if (!auth) {
     console.log('Authorization信息未配置')
