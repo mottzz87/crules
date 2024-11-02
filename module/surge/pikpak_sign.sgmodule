@@ -1,17 +1,16 @@
 #!name=PIKPAK Sign-in
-#!desc=自动签到PIKPAK，每天凌晨3:49执行。请确保在[General]部分配置了pikpak_auth变量。
+#!desc=自动签到PIKPAK，每天凌晨3:15执行。请在[General]部分配置pikpak_auth变量。
 
 [General]
-# 请在此处配置您的PIKPAK授权信息
+# 配置您的PIKPAK授权信息
 # pikpak_auth是一个Bearer Token，用于API请求的授权。
-# 示例：
-# pikpak_auth = Bearer <your_token_here>
-pikpak_auth = Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImNmZmExODE3LWI1YWItNDc2ZS1hYWMzLWU2OWE2NjAyMmJlOSJ9.eyJpc3MiOiJodHRwczovL3VzZXIubXlwaWtwYWsuY29tIiwic3ViIjoiWnlYVl9oSURhVmdqVHhjRCIsImF1ZCI6IllVTXg1bkk4WlU4QXA4cG0iLCJleHAiOjE3MzA1Nzk0NzYsImlhdCI6MTczMDU3MjI3NiwiYXRfaGFzaCI6InIuTnMwSkdYUHBTaE9jelI1N2REVW43ZyIsInNjb3BlIjoidXNlciBwYW4iLCJwcm9qZWN0X2lkIjoiMndrczU2YzMxZGM4MHN4bTVwOSIsIm1ldGEiOnsiYSI6IjNicEk3QTMzU3BRcTNFTHZYWVRZTUxSSmdMZ2xCSHZnc3BiYnFlM3kyaUU9In19.YvKvCmqUN45NLknEHft5G6w5ys9GaOxtsM93eXtBb4oHJ1vVAcTFQYSj5zMY1MrQgQ0ZxsTqWpBTtkMUMrRbixo7H6f7xjQxLcN03tGMBGplTA94dR5r6FGJPoS-GluK0ZLQzBBHnJHvmFiJj_08_ldfX6Iun4JcbULd69uOTQqBEe-mFUYJPYSbl2OZFoR1LyZfLoOmyXC3c7ZXYe_jK2IKmmEd2s-Wuz092rZphAQNoH-z2ErK9hHcA3IlyaIXtDNb6KqkObMeQOSiLOxsaKYb9shpOn1r6J3P6ALfXzrO4z4ECLsrVDxwY_Zpg83k6fLE25YxU2Czx7eSlNsnhg
+# 请将<your_token_here>替换为您的实际Token。
+pikpak_auth = Bearer <your_token_here>
 
 [Script]
 # 定时任务脚本
 # 该脚本将在每天凌晨3:15自动执行，进行PIKPAK的签到操作。
-PIKPAK_SignIn = type=cron,cronexp="49 3 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js
+PIKPAK_SignIn = type=cron,cronexp="53 3 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
