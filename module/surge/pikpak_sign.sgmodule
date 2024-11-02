@@ -1,0 +1,9 @@
+#!name=PIKPAK Sign-in
+#!desc=PIKPAK Daily Sign-in
+
+[Script]
+# 定时任务脚本
+PIKPAK_SignIn = type=cron,cronexp="15 3 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/yourusername/yourrepo/main/rewrite/pikpak_signin.js
+
+[MITM]
+hostname = api-drive.mypikpak.com
