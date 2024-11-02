@@ -1,0 +1,11 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/pikpak_2.sgmodule
+#!name=PIKPAK
+#!desc=PIKPAK IP
+
+[Script]
+# 监听第一个接口
+PIKPAK_IP = type=http-response,pattern=^https?:\/\/access\.mypikpak\.net\/access_controller\/v1\/area_accessible,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/pikpak_ip2.js
+
+
+[MITM]
+hostname = %APPEND% access.mypikpak.net
