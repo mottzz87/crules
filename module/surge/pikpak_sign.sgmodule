@@ -1,5 +1,5 @@
 #!name=PIKPAK Sign-in
-#!desc=自动签到PIKPAK，每天凌晨3:15执行。请在安装时配置pikpak_auth变量。
+#!desc=自动签到PIKPAK，每天凌晨1:00执行。请在安装时配置pikpak_auth变量。
 #!arguments=pikpak_auth
 
 [General]
@@ -11,7 +11,7 @@ pikpak_auth = $pikpak_auth
 [Script]
 # 定时任务脚本
 # 该脚本将在每天凌晨3:15自动执行，进行PIKPAK的签到操作。
-PIKPAK_SignIn = type=cron,cronexp="15 4 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument=$pikpak_auth
+PIKPAK_SignIn = type=cron,cronexp="0 1 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument=$pikpak_auth
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
