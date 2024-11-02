@@ -16,20 +16,22 @@
   $httpClient.post(request, (error, response, data) => {
     if (error) {
       console.log('请求失败：', error)
-      $notification.post('PIKPAK 签到', '', '请求失败')
+      $notification.post('PIKPAK 签到', '请求失败', error)
+      $done()
       return
     }
 
     try {
       const result = JSON.parse(data)
       if (result.updated) {
-        $notification.post('PIKPAK 签到', '', '签到成功')
+        $notification.post('PIKPAK 签到', '签到成功', '您已成功签到')
       } else {
-        $notification.post('PIKPAK 签到', '', '签到失败')
+        $notification.post('PIKPAK 签到', '签到失败', '今日已经签到过了！')
       }
     } catch (e) {
       console.log('解析响应失败：', e)
-      $notification.post('PIKPAK 签到', '', '解析响应失败')
+      $notification.post('PIKPAK 签到', '解析响应失败', e.message)
     }
+    $done()
   })
 })()
