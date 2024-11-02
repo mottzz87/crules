@@ -34,7 +34,7 @@
       if (result.updated) {
         $notification.post('PIKPAK 签到', '签到成功', '您已成功签到')
       } else {
-        $notification.post('PIKPAK 签到', '签到失败', '未能成功签到')
+        $notification.post('PIKPAK 签到', '签到失败', '今日您已经签过啦！')
       }
     } catch (e) {
       console.log('解析响应失败：', e)
