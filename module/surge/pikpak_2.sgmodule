@@ -6,6 +6,8 @@
 # 监听第一个接口
 PIKPAK_IP = type=http-response,pattern=^https?:\/\/access\.pikpakdrive\.net\/access_controller\/v1\/area_accessible,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/pikpak_ip2.js
 
+PIKPAK_IP2 = type=http-response,pattern=^https?:\/\/access\.mypikpak\.com\/access_controller\/v1\/area_accessible,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/pikpak_ip2.js
+
 
 [MITM]
-hostname = %APPEND% access.mypikpak.net
+hostname = %APPEND% access.mypikpak.net, access.mypikpak.com
