@@ -10,7 +10,7 @@
     let modifiedResponse
 
     if (hostname === 'api-drive.mypikpak.com') {
-      if (url.includes('area_country_code')) {
+      if (url.indexOf('area_country_code') !== -1) {
         modifiedResponse = {
           data: {
             countryCode: 'KR',
@@ -22,7 +22,7 @@
         }
       }
     } else if (hostname === 'access.mypikpak.net') {
-      if (url.includes('area_accessible')) {
+      if (url.indexOf('area_accessible') !== -1) {
         modifiedResponse = {
           accessible: true,
           countryCode: 'KR',
