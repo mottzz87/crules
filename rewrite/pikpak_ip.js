@@ -7,7 +7,7 @@
 
     let modifiedResponse = {
       data: {
-        countryCode: 'KR',
+        countryCode: 'KO',
         ip: '158.247.245.228',
       },
       redirect_uri: '',
