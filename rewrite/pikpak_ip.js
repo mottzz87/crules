@@ -1,5 +1,6 @@
 ;(() => {
   console.log('PIKPAK 响应脚本执行')
+  const url = $request.url
   try {
     let originalBody = JSON.parse($response.body)
     console.log('原始响应体：', JSON.stringify(originalBody))
@@ -12,6 +13,13 @@
       redirect_uri: '',
       result: 'ACCEPTED',
       message: '',
+    }
+    if (url.includes('area_accessible')) {
+      modifiedResponse = {
+        accessible: true,
+        countryCode: 'KR',
+        ip: '158.247.245.228',
+      }
     }
 
     console.log('修改后的响应：', JSON.stringify(modifiedResponse))
