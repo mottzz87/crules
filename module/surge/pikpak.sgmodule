@@ -3,9 +3,10 @@
 #!desc=PIKPAK IP
 
 [Script]
-# https://api-drive.mypikpak.com/drive/v1/privilege/area_country_code
+# 监听第一个接口
 PIKPAK_IP = type=http-response,pattern=^https?:\/\/api-drive\.mypikpak\.com\/drive\/v1\/privilege\/area_country_code,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/pikpak_ip.js
 
+# 监听第二个接口
 PIKPAK_IP2 = type=http-response,pattern=^https?:\/\/access\.mypikpak\.net\/access_controller\/v1\/area_accessible,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/pikpak_ip.js
 
 [MITM]
