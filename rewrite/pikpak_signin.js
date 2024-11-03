@@ -26,7 +26,10 @@
     $httpClient.post(
       {
         url: initUrl,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: 'aliyungf_tc=f20c276683204e335a7a0468eca74f04a41c2ab8175baae77f76716a7688e32e',
+        },
         body: initBody,
       },
       (initError, initResponse, initData) => {
