@@ -1,7 +1,7 @@
 ;(() => {
-  const accounts_0 = JSON.parse($argument) // 获取传入的账号信息
+  // const accounts_0 = JSON.parse($argument) // 获取传入的账号信息
 
-  console.log('1111111111111', accounts_0)
+  console.log('1111111111111', $argument)
   const accounts = 'nclarka875@gmail.com, nclarka876@gmail.com'.split(',')
   const password = '8c8uSUp6y6LFyZG'
 
