@@ -35,7 +35,7 @@
           $notification.post('PIKPAK 签到', '初始化失败', initError)
           return
         }
-        const initResult = JSON.parse(initData)
+        const initResult = initData
         const captchaToken = initResult.captcha_token
         console.log(44444, '-----', captchaToken)
 
@@ -72,7 +72,7 @@
               return
             }
 
-            const signInResult = JSON.parse(signInData)
+            const signInResult = signInData
             const authToken = `${signInResult.token_type} ${signInResult.access_token}`
 
             if (!authToken) {
@@ -100,7 +100,7 @@
                   return
                 }
 
-                const rewardResult = JSON.parse(rewardData)
+                const rewardResult = rewardData
                 if (rewardResult.updated) {
                   $notification.post('PIKPAK 签到', '签到成功', `账号 ${email} 已成功签到`)
                 } else {
