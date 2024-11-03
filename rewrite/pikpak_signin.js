@@ -118,8 +118,7 @@
     setTimeout(() => {
       signIn(account, password)
       console.log(22222, '-----', account, '-----', password)
-    }, index * delay)
+    }, delay)
   })
   console.log('1000000')
-  $done() // 增加 $done() 调用以结束脚本
 })()
