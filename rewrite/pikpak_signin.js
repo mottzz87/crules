@@ -21,6 +21,8 @@
       meta: { email: email },
     })
 
+    console.log(3333, '-----')
+
     $httpClient.post(
       {
         url: initUrl,
@@ -33,9 +35,9 @@
           $notification.post('PIKPAK 签到', '初始化失败', initError)
           return
         }
-
         const initResult = JSON.parse(initData)
         const captchaToken = initResult.captcha_token
+        console.log(44444, '-----', captchaToken)
 
         if (!captchaToken) {
           console.log('未能获取到captcha_token')
@@ -115,7 +117,9 @@
   accounts.forEach((account, index) => {
     setTimeout(() => {
       signIn(account, password)
+      console.log(22222, '-----', account, '-----', password)
     }, index * delay)
   })
+  console.log('1000000')
   $done() // 增加 $done() 调用以结束脚本
 })()
