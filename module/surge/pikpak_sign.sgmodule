@@ -7,7 +7,7 @@
 [Script]
 # 定时任务脚本
 # 该脚本将在每天凌晨3:15自动执行，进行PIKPAK的签到操作。
-PIKPAK_SignIn = type=cron,cronexp="34 2 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument="{"emails":"{{{emails}}}","password":"{{{password}}}","captcha_token":"{{{captcha_token}}}"}"
+PIKPAK_SignIn = type=cron,cronexp="39 2 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument="{"emails":"{{{emails}}}","password":"{{{password}}}","captcha_token":"{{{captcha_token}}}"}"
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
