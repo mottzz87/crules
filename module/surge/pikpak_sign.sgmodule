@@ -1,17 +1,13 @@
 #!name=PIKPAK Sign-in
-#!desc=自动签到PIKPAK，每天凌晨1:00执行。请在安装时配置pikpak_auth变量。
-#!arguments=pikpak_auth
+#!desc=自动签到PIKPAK，每天凌晨1:00执行。
+#!arguments=emails: '',password: '', captcha_token: ''
+#!arguments-desc=- emails: 多账号英文逗号隔开\n password: 多账号统一密码\n captcha_token: 初始化验证token
 
-[General]
-# 配置您的PIKPAK授权信息
-# pikpak_auth是一个Bearer Token，用于API请求的授权。
-# 请在安装模块时输入您的实际Token。
-pikpak_auth = $pikpak_auth
 
 [Script]
 # 定时任务脚本
 # 该脚本将在每天凌晨3:15自动执行，进行PIKPAK的签到操作。
-PIKPAK_SignIn = type=cron,cronexp="0 1 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument=$pikpak_auth
+PIKPAK_SignIn = type=cron,cronexp="22 2 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/pikpak_signin.js,argument="{"emails":"{{{emails}}}","password":"{{{password}}}","captcha_token":"{{{captcha_token}}}"}"
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
