@@ -114,7 +114,8 @@
 
   accounts.forEach((account, index) => {
     setTimeout(() => {
-      signIn(account.email, password)
+      signIn(account, password)
     }, index * delay)
   })
+  $done() // 增加 $done() 调用以结束脚本
 })()
