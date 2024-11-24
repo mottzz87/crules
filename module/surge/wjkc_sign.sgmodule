@@ -1,18 +1,14 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkc_sign.sgmodule
 #!name=WJKC Sign-in
-#!desc=WJKC 自动签到模块 - 支持多账号，每天凌晨0:05自动执行
+#!desc=WJKC自动签到 • 支持多账号 • 每天0:05自动执行
+使用说明：1.先开启MITM功能 2.访问wjkc123.com登录账号 3.获取Cookie成功后即可自动签到 4.Cookie如失效请重新登录获取
 #!category=NClark
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
 
 [Script]
-# 处理请求，获取账号信息
 WJKC_Cookie_Request = type=http-request,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_cookie.js,requires-body=1
-
-# 处理响应，保存Cookie
 WJKC_Cookie_Response = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_cookie_response.js
-
-# 定时签到（所有账号）
 WJKC_SignIn = type=cron,cronexp="5 0 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_signin.js
 
 [MITM]
@@ -23,26 +19,3 @@ hostname = wjkc123.com
 
 [Panel]
 WJKC签到 = script-name=WJKC_SignIn,title=WJKC签到,content=请查看通知,style=info
-
-#!使用说明
-# 1. 配置要求:
-#    - Surge 需要开启 MITM 功能
-#    - 需要信任本模块的 MITM 证书
-#    - 首次使用需要先获取 Cookie
-#
-# 2. 获取 Cookie:
-#    - 打开 WJKC 网站 (https://wjkc123.com)
-#    - 点击登录，输入账号密码
-#    - 登录成功后会自动获取 Cookie
-#    - 可以重复以上步骤，添加多个账号
-#
-# 3. 签到说明:
-#    - 脚本会在每天凌晨 0:05 自动执行签到
-#    - 支持多账号，自动分配存储空间
-#    - 签到结果会通过通知显示
-#    - 如果 Cookie 失效，请重新登录获取
-#
-# 4. 常见问题:
-#    - 如果签到失败，请检查 Cookie 是否过期
-#    - 建议定期检查账号登录状态
-#    - 如遇到问题可以尝试重新获取 Cookie
