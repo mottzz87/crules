@@ -69,6 +69,7 @@
   try {
     const accountMap = getAccountMap()
     const accounts = Object.entries(accountMap)
+    const results = []
 
     for (const [email, cookieKey] of accounts) {
       try {
@@ -76,18 +77,33 @@
         while (retryCount > 0) {
           try {
             const result = await signIn(email, cookieKey)
-            $notification.post('WJKC 签到', email, result)
+            results.push(`${email}: ${result}`)
             break
           } catch (error) {
+            if (error === '未登录') {
+              results.push(`${email}: 未登录`)
+              throw error
+            }
             retryCount--
-            if (retryCount === 0) throw error
+            if (retryCount === 0) {
+              results.push(`${email}: ${error}`)
+              throw error
+            }
             await new Promise(resolve => setTimeout(resolve, 2000))
           }
         }
         await new Promise(resolve => setTimeout(resolve, 3000))
       } catch (e) {
-        $notification.post('WJKC 签到', email, e.toString())
+        // 错误已经添加到 results 中，这里不需要额外处理
       }
+    }
+
+    // 统一发送通知
+    if (results.length > 0) {
+      const title = 'WJKC 签到'
+      const subtitle = `共 ${results.length} 个账号`
+      const body = results.map(result => `• ${result}`).join('\n')
+      $notification.post(title, subtitle, body)
     }
   } catch (e) {}
 
