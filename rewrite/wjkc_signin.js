@@ -100,9 +100,24 @@
 
     // 统一发送通知
     if (results.length > 0) {
+      // 对结果进行分类和排序
+      const sortedResults = results.sort((a, b) => {
+        const order = {
+          签到成功: 0,
+          今日已签到: 1,
+          网络错误: 2,
+          未登录: 3,
+        }
+
+        const statusA = a.split(': ')[1]
+        const statusB = b.split(': ')[1]
+
+        return (order[statusA] ?? 2) - (order[statusB] ?? 2)
+      })
+
       const title = 'WJKC 签到'
       const subtitle = `共 ${results.length} 个账号`
-      const body = results.map(result => `• ${result}`).join('\n')
+      const body = sortedResults.map(result => `• ${result}`).join('\n')
       $notification.post(title, subtitle, body)
     }
   } catch (e) {}
