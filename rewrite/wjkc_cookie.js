@@ -24,12 +24,62 @@
     return newMap
   }
 
+  const base64Decode = str => {
+    if (typeof atob === 'function') {
+      return atob(str)
+    }
+
+    // 自定义解码
+    const base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    str = str.replace(/[^A-Za-z0-9+/=]/g, '')
+    let result = ''
+
+    for (let i = 0; i < str.length; i += 4) {
+      const c1 = base64chars.indexOf(str[i] || 'A')
+      const c2 = base64chars.indexOf(str[i + 1] || 'A')
+      const c3 = base64chars.indexOf(str[i + 2] || 'A')
+      const c4 = base64chars.indexOf(str[i + 3] || 'A')
+
+      result += String.fromCharCode(
+        (c1 << 2) | (c2 >> 4),
+        ((c2 & 15) << 4) | (c3 >> 2),
+        ((c3 & 3) << 6) | c4
+      )
+    }
+
+    return result.replace(/[^\x20-\x7E]/g, '')
+  }
+
   try {
-    // 解析请求体获取邮箱
-    const requestBody = JSON.parse($request.body)
-    const decodedData = atob(requestBody.data)
-    const requestData = JSON.parse(decodedData)
+    let requestBody
+    try {
+      if (typeof $request.body === 'string') {
+        requestBody = JSON.parse($request.body)
+      } else if (typeof $request.body === 'object') {
+        requestBody = $request.body
+      } else {
+        throw new Error(`意外的请求体类型: ${typeof $request.body}`)
+      }
+    } catch (parseError) {
+      throw new Error('请求数据格式错误')
+    }
+
+    if (!requestBody || !requestBody.data) {
+      throw new Error('请求数据缺少data字段')
+    }
+
+    const decodedData = base64Decode(requestBody.data)
+    let requestData
+    try {
+      requestData = JSON.parse(decodedData)
+    } catch (parseError) {
+      throw new Error('解码数据格式错误')
+    }
+
     const email = requestData.email
+    if (!email) {
+      throw new Error('未找到邮箱信息')
+    }
 
     // 获取并重新整理映射
     const accountMap = getAccountMap()

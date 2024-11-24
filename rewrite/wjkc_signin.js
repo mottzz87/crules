@@ -1,4 +1,6 @@
 !(async () => {
+  const COOKIE_KEY_PREFIX = 'CookieWJKC'
+
   // 获取账号映射
   const getAccountMap = () => {
     try {
@@ -41,7 +43,7 @@
           try {
             const result = JSON.parse(data)
             if (result.data) {
-              const decodedData = atob(result.data)
+              const decodedData = base64Decode(result.data)
               const responseObj = JSON.parse(decodedData)
 
               if (responseObj.code === 0) {
@@ -53,27 +55,62 @@
               } else {
                 reject(responseObj.msg || '未知错误')
               }
+            } else {
+              reject('响应数据格式错误')
             }
           } catch (e) {
-            reject('解析失败')
+            reject('数据解析失败')
           }
         }
       )
     })
   }
 
-  // 处理所有账号
-  const accountMap = getAccountMap()
-  for (const [email, cookieKey] of Object.entries(accountMap)) {
-    try {
-      const result = await signIn(email, cookieKey)
-      $notification.post('WJKC 签到', email, result)
-      // 账号之间添加延迟
-      await new Promise(resolve => setTimeout(resolve, 3000))
-    } catch (e) {
-      $notification.post('WJKC 签到', email, e)
+  try {
+    const accountMap = getAccountMap()
+    const accounts = Object.entries(accountMap)
+
+    for (const [email, cookieKey] of accounts) {
+      try {
+        let retryCount = 3
+        while (retryCount > 0) {
+          try {
+            const result = await signIn(email, cookieKey)
+            $notification.post('WJKC 签到', email, result)
+            break
+          } catch (error) {
+            retryCount--
+            if (retryCount === 0) throw error
+            await new Promise(resolve => setTimeout(resolve, 2000))
+          }
+        }
+        await new Promise(resolve => setTimeout(resolve, 3000))
+      } catch (e) {
+        $notification.post('WJKC 签到', email, e.toString())
+      }
     }
-  }
+  } catch (e) {}
 
   $done()
 })()
+
+const base64Decode = str => {
+  const base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+  str = str.replace(/=+$/, '')
+  let result = ''
+
+  for (let i = 0; i < str.length; i += 4) {
+    const c1 = base64chars.indexOf(str[i] || 'A')
+    const c2 = base64chars.indexOf(str[i + 1] || 'A')
+    const c3 = base64chars.indexOf(str[i + 2] || 'A')
+    const c4 = base64chars.indexOf(str[i + 3] || 'A')
+
+    result += String.fromCharCode(
+      (c1 << 2) | (c2 >> 4),
+      ((c2 & 15) << 4) | (c3 >> 2),
+      ((c3 & 3) << 6) | c4
+    )
+  }
+
+  return result.replace(/\0+$/, '')
+}
