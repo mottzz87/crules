@@ -7,15 +7,16 @@
 #!homepage=https://github.com/mottzz87/crules
 
 [Script]
+# 处理请求，获取账号信息
 WJKC_Cookie_Request = type=http-request,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_cookie.js,requires-body=1
+
+# 处理响应，保存Cookie
 WJKC_Cookie_Response = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_cookie_response.js
+
+# 定时签到（所有账号）
+# 该脚本将在每天凌晨0:05自动执行，进行WJKC的签到操作。
 WJKC_SignIn = type=cron,cronexp="5 0 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_signin.js
 
 [MITM]
+# 请确保启用了中间人攻击功能以拦截请求
 hostname = wjkc123.com
-
-[URL Rewrite]
-^https?:\/\/wjkc123\.com\/api\/user\/login - request-header
-
-[Panel]
-WJKC签到 = script-name=WJKC_SignIn,title=WJKC签到,content=请查看通知,style=info
