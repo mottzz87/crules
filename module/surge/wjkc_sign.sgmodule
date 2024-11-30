@@ -1,6 +1,6 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkc_sign.sgmodule
 #!name=WJKC Sign-in
-#!desc=WJKC自动签到 • 支持多账号 • 每天0:05自动执行 \n使用说明：\n1.先开启MITM功能 \n2.访问wjkc123.com登录账号 \n3.获取Cookie成功后即可自动签到 \n4.Cookie如失效请重新登录获取
+#!desc=WJKC自动签到 • 支持多账号 • 每天0:05和22:05自动执行 \n使用说明：\n1.先开启MITM功能 \n2.访问wjkc123.com登录账号 \n3.获取Cookie成功后即可自动签到 \n4.Cookie如失效请重新登录获取
 #!category=NClark
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
@@ -13,8 +13,8 @@ WJKC_Cookie_Request = type=http-request,pattern=^https?:\/\/wjkc123\.com\/api\/u
 WJKC_Cookie_Response = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_cookie_response.js
 
 # 定时签到（所有账号）
-# 该脚本将在每天凌晨0:05自动执行，进行WJKC的签到操作。
-WJKC_SignIn = type=cron,cronexp="5 0 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_signin.js
+# 该脚本将在每天凌晨0:05和晚上22:05自动执行，进行WJKC的签到操作。
+WJKC_SignIn = type=cron,cronexp="5 0,22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/rewrite/wjkc_signin.js
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
