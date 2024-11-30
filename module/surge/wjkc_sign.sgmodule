@@ -18,4 +18,4 @@ WJKC_SignIn = type=cron,cronexp="5 0,22 * * *",wake-system=1,timeout=120,script-
 
 [MITM]
 # 请确保启用了中间人攻击功能以拦截请求
-hostname = wjkc123.com
+hostname = %APPEND% wjkc123.com
