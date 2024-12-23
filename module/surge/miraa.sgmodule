@@ -1,0 +1,18 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/miraa.sgmodule
+#!name=Miraa Pro
+#!desc=Miraa 高级功能解锁 • 突破配额限制
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+
+[Script]
+# 响应体修改 - 解锁配额限制
+# 突破 AI 解释和语音转写的使用配额
+Miraa_Quota = type=http-response,pattern=^https://api.myoland.com/quotas/miraa/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/miraa_response.js
+
+# 请求体修改 - 优化转写请求
+# 优化语音转写的请求参数
+Miraa_Trans = type=http-request,pattern=^https://api.myoland.com/transcribes/miraa/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/miraa_request.js
+
+[MITM]
+hostname = %APPEND% api.myoland.com
