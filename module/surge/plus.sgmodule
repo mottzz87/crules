@@ -1,16 +1,14 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/plus.sgmodule
-#!name=plus合集
+#!name=Plus合集
 #!desc=自用合集
-[URL Rewrite]
-
-
-[Map Local]
-
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
 
 [Script]
 #************************************#
 # Moji辞书-日语学习字典
-# hostname = api.mojidict.com
+
 Moji辞书 = type=http-response,pattern=^https?:\/\/api\.mojidict\.com\/parse\/functions\/getNPrivileges,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/moji/mojics.js
 [MITM]
 hostname = %APPEND% api.mojidict.com
