@@ -1,0 +1,1 @@
+(function(){return eval('if ($request && $request[\'body\']) {\n    let _0x34817b = $request[\'body\'], _0x5dca11 = JSON[\'parse\'](_0x34817b);\n    _0x5dca11[\'hasOwnProperty\'](\'audioDuration\') && (_0x5dca11[\'audioDuration\'] = 0), $done({ \'body\': JSON[\'stringify\'](_0x5dca11) });\n}');}());
