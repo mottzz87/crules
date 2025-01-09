@@ -9,6 +9,6 @@
 #************************************#
 # Moji辞书-日语学习字典
 
-Moji辞书 = type=http-response,pattern=^https?:\/\/api\.mojidict\.com\/parse\/functions\/getNPrivileges,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/moji/mojics.js
+Moji辞书 = type=http-response,pattern=^https?:\/\/api\.mojidict\.com\/parse\/functions\/getNPrivileges,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/moji/mojics.js
 [MITM]
 hostname = %APPEND% api.mojidict.com
