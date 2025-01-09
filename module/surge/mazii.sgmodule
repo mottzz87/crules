@@ -6,7 +6,7 @@
 #!homepage=https://github.com/mottzz87/crules
 
 [Script]
-Mazii_VIP = type=http-response,pattern=^https?:\/\/api\.mazii\.net\/api\/(loginWith|init|init-login|profile),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/mazii.js
+Mazii_VIP = type=http-response,pattern=^https?:\/\/api\.mazii\.net\/api\/(loginWith|init|init-login|profile),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/mazii/mazii.js
 
 [MITM]
 hostname = %APPEND% api.mazii.net

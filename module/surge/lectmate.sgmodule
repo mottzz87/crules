@@ -1,8 +1,11 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/lectmate.sgmodule
 #!name=Lectmate
 #!desc=有道留学听课宝
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
 
 [Script]
-Lectmate = type=http-response,pattern=^https:\/\/intervip\.youdao\.com\/api\/verify\/ios-receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/lectmate.js
+Lectmate = type=http-response,pattern=^https:\/\/intervip\.youdao\.com\/api\/verify\/ios-receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crules/main/rewrite/lectmate/lectmate.js
 
 hostname = %APPEND% intervip.youdao.com
