@@ -1,0 +1,3 @@
+# 现有的忽略规则...
+module/surge/migii.sgmodule
+rewrite/migii.js 
