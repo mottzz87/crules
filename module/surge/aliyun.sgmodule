@@ -1,0 +1,13 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/aliyun.sgmodule
+#!name=Aliyun SVIP
+#!desc=阿里云盘 净化/解锁SVIP.使用说明：非一次性解锁，每次解锁需打开脚本
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+
+[Script]
+# > 阿里云盘 净化/解锁SVIP
+阿里云盘 净化/解锁SVIP = type=http-response, pattern=^https?:\/\/(api|member)\.(aliyundrive|alipan)\.com\/(.+\/(users|activity|user\/get)|((business|apps)\/.+\/users|adrive\/.+\/user)), script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/aliyun/aliyun.js, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+hostname = %APPEND% *.aliyundrive.com, *.alipan.com
