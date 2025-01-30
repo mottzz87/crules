@@ -1,0 +1,18 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/leiting.sgmodule
+#!name=批量兑换优惠券
+#!desc=批量登录并兑换优惠券脚本
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=账号列表:test1@gmail.com|test2@gmail.com|test3@gmail.com,密码列表:12345678,优惠券代码:snake
+#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 优惠券代码：要兑换的优惠券代码\n\n手动触发方式：\n1. 登录：访问 https://nn8qozmu.nn8qozmu.top/api/v1/passport/auth/login\n2. 兑换：访问 https://nn8qozmu.nn8qozmu.top/api/v1/user/redeemGiftCode
+
+[Script]
+# 登录获取token
+登录获取Token = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/passport\/auth\/login$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&giftCode={{{优惠券代码}}}
+
+# 批量兑换
+批量兑换 = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/user\/redeemGiftCode$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem_task.js,argument=accounts={{{账号列表}}}&giftCode={{{优惠券代码}}}
+
+[MITM]
+hostname = %APPEND% nn8qozmu.nn8qozmu.top
