@@ -1,6 +1,6 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
 #!name=网加快车自动化Plus
-#!desc=网加快车批量登录+自动签到 • 支持多账号 \n\n配置说明：\n1. 账号列表：多个邮箱用竖线|分隔\n2. 密码列表：多个密码用竖线|分隔，单密码则所有账号共用\n3. 是否重试：true/false，登录失败是否重试\n\n使用方法：\n1. 登录：访问 https://wjkc123.com/api/user/login\n2. 签到：访问 https://wjkc123.com/api/user/sign_use
+#!desc=网加快车批量登录+自动签到 • 支持多账号 \n
 #!category=NClark
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
