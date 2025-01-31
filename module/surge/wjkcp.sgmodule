@@ -12,7 +12,7 @@
 wjkcp登录请求 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{是否重试}}}
 
 # 定时签到
-wjkcp批量签到 = type=cron,cronexp="29 22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+wjkcp批量签到 = type=cron,cronexp="35 22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
 
 # 手动触发签到
 wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
