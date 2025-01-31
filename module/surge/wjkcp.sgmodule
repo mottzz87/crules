@@ -1,0 +1,21 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
+#!name=网加快车自动化Plus
+#!desc=网加快车批量登录+自动签到 • 支持多账号 \n\n配置说明：\n1. 账号列表：多个邮箱用竖线|分隔\n2. 密码列表：多个密码用竖线|分隔，单密码则所有账号共用\n3. 是否重试：true/false，登录失败是否重试\n\n使用方法：\n1. 登录：访问 https://wjkc123.com/api/user/login\n2. 签到：访问 https://wjkc123.com/api/user/sign_use
+#!category=NClark
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,是否重试:false
+#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 是否重试：true/false，失败是否重试，默认false\n\n手动触发方式：\n1. 登录：访问 https://wjkc123.com/api/user/login\n2. 签到：访问 https://wjkc123.com/api/user/sign_use
+
+[Script]
+# 手动触发获取token
+wjkcp登录请求 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{是否重试}}}
+
+# 定时签到
+wjkcp批量签到 = type=cron,cronexp="39 0,8 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+
+# 手动触发签到
+wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+
+[MITM]
+hostname = %APPEND% wjkc123.com 
