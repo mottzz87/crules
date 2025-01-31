@@ -1,6 +1,6 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/leiting.sgmodule
-#!name=批量兑换优惠券
-#!desc=批量登录并兑换优惠券脚本
+#!name=雷霆批量兑换优惠券
+#!desc=雷霆批量登录并兑换优惠券脚本
 #!category=NClark
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
@@ -9,10 +9,10 @@
 
 [Script]
 # 登录获取token
-登录获取Token = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/passport\/auth\/login$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&giftCode={{{优惠券代码}}}
+雷霆登录获取Token = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/passport\/auth\/login$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&giftCode={{{优惠券代码}}}
 
 # 批量兑换
-批量兑换 = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/user\/redeemGiftCode$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem_task.js,argument=accounts={{{账号列表}}}&giftCode={{{优惠券代码}}}
+雷霆批量兑换 = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/user\/redeemGiftCode$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem_task.js,argument=accounts={{{账号列表}}}&giftCode={{{优惠券代码}}}
 
 [MITM]
 hostname = %APPEND% nn8qozmu.nn8qozmu.top
