@@ -1,21 +1,28 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
 #!name=网加快车自动化Plus
-#!desc=网加快车批量登录+自动签到 • 支持多账号 \n
+#!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天22:35自动签到\n2. 每30天自动登录续期\n
 #!category=NClark
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,是否重试:false
-#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 是否重试：true/false，失败是否重试，默认false\n\n手动触发方式：\n1. 登录：访问 https://wjkc123.com/api/user/login\n2. 签到：访问 https://wjkc123.com/api/user/sign_use
+#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,重试次数:0
+#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 重试次数：⚠️ 仅在确定需要时设置！0表示不重试（推荐），最大3次。每次重试会增加服务器负载，除非特殊情况，建议保持默认值0\n手动任务：\n1. 登录：访问 https://wjkc123.com/api/user/login11\n2. 签到：访问 https://wjkc123.com/api/user/sign_use22
+#!arguments-option=重试次数:0,1,2,3
 
 [Script]
 # 手动触发获取token
-wjkcp登录请求 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{是否重试}}}
+wjkcp手动登录 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
 
-# 定时签到
-wjkcp批量签到 = type=cron,cronexp="35 22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+# 自动登录（每30天执行一次）
+wjkcp自动登录 = type=cron,cronexp="0 0 */30 * *",wake-system=1,timeout=120,script-path=wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
 
-# 手动触发签到
-wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+# 手动签到
+wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+
+# 自动签到（每天22:35执行）
+wjkcp自动签到 = type=cron,cronexp="35 22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+
+# 用户信息响应重写
+wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
 
 [MITM]
 hostname = %APPEND% wjkc123.com 
