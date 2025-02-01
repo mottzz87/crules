@@ -1,7 +1,7 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/leiting.sgmodule
 #!name=雷霆批量兑换优惠券
 #!desc=雷霆批量登录并兑换优惠券脚本
-#!category=Mottzz87
+#!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
 #!arguments=账号列表:test1@gmail.com|test2@gmail.com|test3@gmail.com,密码列表:12345678,优惠券代码:snake
