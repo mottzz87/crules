@@ -1,14 +1,14 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/moji.sgmodule
 #!name=Moji合集
-#!desc=moji辞书
+#!desc=moji辞书+moji阅读
 #!category=Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
 
 [Script]
-#************************************#
-# Moji辞书-日语学习字典
 
 Moji辞书 = type=http-response,pattern=^https?:\/\/api\.mojidict\.com\/parse\/functions\/getNPrivileges,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/moji/mojics.js
+Moji阅读 = type=http-response,pattern=^https?:\/\/api\.mojidict\.com\/app\/mojiread\/parse\/functions\/getNPrivileges-v2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/moji/mojird.js
+
 [MITM]
 hostname = %APPEND% api.mojidict.com
