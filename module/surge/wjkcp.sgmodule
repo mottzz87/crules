@@ -1,7 +1,7 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
 #!name=网加快车自动化Plus
 #!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天22:35自动签到\n2. 每30天自动登录续期\n
-#!category=NClark
+#!category=Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
 #!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,重试次数:0
