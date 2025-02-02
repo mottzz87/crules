@@ -10,7 +10,7 @@
 
 [Script]
 # 手动触发获取token
-wjkcp手动登录 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
+wjkcp手动登录 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
 
 # 自动登录（每30天执行一次）
 wjkcp自动登录 = type=cron,cronexp="0 0 */30 * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
