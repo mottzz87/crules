@@ -19,7 +19,7 @@ wjkcp自动登录 = type=cron,cronexp="0 0 */30 * *",wake-system=1,timeout=120,s
 wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}
 
 # 自动签到（每天0:35和22:35执行）
-wjkcp自动签到 = type=cron,cronexp="35 0,22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}
+wjkcp自动签到 = type=cron,cronexp="*/3 * * * *",wake-system=1,timeout=180,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}
 
 # 用户信息响应重写
 wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
