@@ -1,18 +1,18 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/leiting.sgmodule
 #!name=雷霆批量兑换优惠券
-#!desc=雷霆批量登录并兑换优惠券脚本
+#!desc=批量登录并兑换优惠券脚本
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
 #!arguments=账号列表:test1@gmail.com|test2@gmail.com|test3@gmail.com,密码列表:12345678,优惠券代码:snake
-#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 优惠券代码：要兑换的优惠券代码\n\n手动触发方式：\n1. 登录：访问 https://nn8qozmu.nn8qozmu.top/api/v1/passport/auth/login\n2. 兑换：访问 https://nn8qozmu.nn8qozmu.top/api/v1/user/redeemGiftCode
+#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 优惠券代码：要兑换的优惠券代码\n\n手动触发方式：\n1. 登录：访问 https://nn8qozmu.nn8qozmu.top/api/v1/passport/auth/login11\n2. 兑换：访问 https://nn8qozmu.nn8qozmu.top/api/v1/user/redeemGiftCode22
 
 [Script]
 # 登录获取token
-雷霆登录获取Token = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/passport\/auth\/login$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&giftCode={{{优惠券代码}}}
+雷霆登录获取Token = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/passport\/auth\/login11$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&giftCode={{{优惠券代码}}}
 
 # 批量兑换
-雷霆批量兑换 = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/user\/redeemGiftCode$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_redeem_task.js,argument=accounts={{{账号列表}}}&giftCode={{{优惠券代码}}}
+雷霆批量兑换 = type=http-request,timeout=120,pattern=^https?:\/\/nn8qozmu\.nn8qozmu\.top\/api\/v1\/user\/redeemGiftCode22$,requires-body=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/leiting/leiting_giftcode.js,argument=accounts={{{账号列表}}}&giftCode={{{优惠券代码}}}
 
 [MITM]
 hostname = %APPEND% nn8qozmu.nn8qozmu.top

@@ -1,6 +1,6 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
 #!name=网加快车自动化Plus
-#!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天22:35自动签到\n2. 每30天自动登录续期\n
+#!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天0:35和22:35自动签到\n2. 每30天自动登录续期\n
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
@@ -10,16 +10,16 @@
 
 [Script]
 # 手动触发获取token
-wjkcp手动登录 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
+wjkcp手动登录 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
 
 # 自动登录（每30天执行一次）
 wjkcp自动登录 = type=cron,cronexp="0 0 */30 * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{重试次数}}}
 
 # 手动签到
-wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+wjkcp手动签到 = type=http-request,timeout=120,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}
 
-# 自动签到（每天22:35执行）
-wjkcp自动签到 = type=cron,cronexp="35 22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
+# 自动签到（每天0:35和22:35执行）
+wjkcp自动签到 = type=cron,cronexp="35 0,22 * * *",wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js
 
 # 用户信息响应重写
 wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
