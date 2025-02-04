@@ -30,7 +30,7 @@ wjkcp自动签到早间 = type=cron,cronexp="{{{几分触发}}} {{{早间几点�
 wjkcp自动签到晚间 = type=cron,cronexp="{{{几分触发}}} {{{晚间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}
 
 # 用户信息响应重写
-wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/ wjkcp_user.js
+wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
 
 [MITM]
 hostname = %APPEND% wjkc123.com 
