@@ -17,13 +17,13 @@
 ikuuu手动登录 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/auth\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&domain={{{域名}}}
 
 # 自动登录（每天0:55执行）
-ikuuu自动登录 = type=cron,cronexp="55 0 * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}&domain={{{域名}}}
+ikuuu自动登录 = type=cron,cronexp="*/3 * * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}&domain={{{域名}}}
 
 # 手动签到
 ikuuu手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/user\/checkin22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_signin.js,argument=accounts={{{账号列表}}}&domain={{{域名}}}
 
 # 自动签到（每天3:12和21:12执行）
-ikuuu自动签到 = type=cron,cronexp="12 3,21 * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
+ikuuu自动签到 = type=cron,cronexp="*/3 * * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
 
 [MITM]
 hostname = %APPEND% {{{域名}}} 
