@@ -1,0 +1,29 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/ikuuu.sgmodule
+#!name=iKuuu自动化Plus
+#!desc=iKuuu批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天4:56和22:56自动签到\n2. 每天1:29自动登录续期\n
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,失败重试次数:0,自动登录通知:true,自动签到通知:true,强制登录周期:25,域名:ikuuu.one
+#!arguments-desc=- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n- 失败重试次数：⚠️ 仅在确定需要时设置！0表示不重试（推荐），最大3次。每次重试会增加服务器负载，除非特殊情况，建议保持默认值0\n- 自动登录通知：自动登录时是否通知（失败时仍会通知）\n- 自动签到通知：自动签到时是否通知（失败时仍会通知）\n- 强制登录周期：多少天后强制重新登录，默认25天\n- 域名：网站域名，默认ikuuu.one\n手动任务：\n1. 登录：访问 https://ikuuu.one/auth/login11\n2. 签到：访问 https://ikuuu.one/user/checkin22
+#!arguments-option=失败重试次数:0,1,2,3
+#!arguments-option=自动登录通知:true,false
+#!arguments-option=自动签到通知:true,false
+#!arguments-option=强制登录周期:20,25,30
+#!arguments-option=域名:ikuuu.one
+
+[Script]
+# 手动触发获取token
+ikuuu手动登录 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/auth\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&domain={{{域名}}}
+
+# 自动登录（每天0:55执行）
+ikuuu自动登录 = type=cron,cronexp="55 0 * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}&domain={{{域名}}}
+
+# 手动签到
+ikuuu手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/user\/checkin22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_signin.js,argument=accounts={{{账号列表}}}&domain={{{域名}}}
+
+# 自动签到（每天3:12和21:12执行）
+ikuuu自动签到 = type=cron,cronexp="12 3,21 * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/ikuuu/ikuuu_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
+
+[MITM]
+hostname = %APPEND% {{{域名}}} 
