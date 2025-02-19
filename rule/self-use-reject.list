@@ -21,6 +21,7 @@ DOMAIN-SUFFIX,otheve.beacon.qq.com
 DOMAIN, autoupdate.termius.com
 #mumu
 DOMAIN,mumu.nie.netease.com,REJECT
+DOMAIN,shence.netease.com,REJECT
 
 
 # 杂项
