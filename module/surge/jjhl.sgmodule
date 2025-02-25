@@ -1,0 +1,13 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/jjhl.sgmodule
+#!name=极简汇率
+#!desc=极简汇率 - 让货币流通更简单（永久会员）
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+
+[Script]
+
+极简汇率 = type=http-response,pattern=^https?:\/\/explorer\.tratao\.com\/api\/client\/xtool\/vip,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jjhl/jjhls.js
+
+[MITM]
+hostname = %APPEND% explorer.tratao.com

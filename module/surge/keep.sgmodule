@@ -1,0 +1,13 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/keep.sgmodule
+#!name=Keep
+#!desc=Keep会员+Keep训练计划
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+
+[Script]
+
+Keep会员 = type=http-response,pattern=^https?:\/\/(api|kit).gotokeep\.com\/(nuocha|gerudo|athena|nuocha\/plans|suit\/v5\/smart|kprime\/v4\/suit\/sales)\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/keep/keep.jss
+
+[MITM]
+hostname = %APPEND% *keep*,162.14.5.*,42.187.199.*,101.42.124.*
