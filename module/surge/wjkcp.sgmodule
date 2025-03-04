@@ -24,14 +24,14 @@ wjkcp手动登录 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}
 wjkcp自动登录 = type=cron,cronexp="{{{几分触发}}} {{{几点登录}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}&domain={{{域名}}}
 
 # 手动签到
-wjkcp手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&domain={{{域名}}}
+wjkcp手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&domain={{{域名}}}
 
 # 自动签到（在指定时间执行）
-wjkcp自动签到早间 = type=cron,cronexp="{{{几分触发}}} {{{早间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
-wjkcp自动签到晚间 = type=cron,cronexp="{{{几分触发}}} {{{晚间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
+wjkcp自动签到早间 = type=cron,cronexp="{{{几分触发}}} {{{早间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
+wjkcp自动签到晚间 = type=cron,cronexp="{{{几分触发}}} {{{晚间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
 
 # 用户信息响应重写
-wjkcp用户信息 = type=http-response,pattern=^https?:\/\/{{{域名}}}\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_user.js
+wjkcp用户信息 = type=http-response,pattern=^https?:\/\/{{{域名}}}\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
 
 [MITM]
 hostname = %APPEND% {{{域名}}} 
