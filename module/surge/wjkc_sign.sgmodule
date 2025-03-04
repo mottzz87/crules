@@ -1,4 +1,4 @@
-#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkc_sign.sgmodule
+#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/wjkc_sign.sgmodule
 #!name=WJKC Sign-in
 #!desc=WJKC自动签到 • 支持多账号 • 每天0:05和22:05自动执行 \n使用说明：\n1.先开启MITM功能 \n2.访问wjkc123.com登录账号 \n3.获取Cookie成功后即可自动签到 \n4.Cookie如失效请重新登录获取
 #!category=🎉 Mottzz87
