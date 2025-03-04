@@ -1,11 +1,11 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/wjkcp.sgmodule
 #!name=网加快车自动化Plus
-#!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天凌晨4:06和晚上22:06自动签到\n2. 每天凌晨1:06自动登录续期\n
+#!desc=网加快车批量登录+自动签到 • 支持多账号\n定时任务：\n1. 每天凌晨4:16和晚上22:16自动签到\n2. 每天凌晨1:16自动登录续期\n
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,失败重试次数:0,自动登录通知:true,自动签到通知:true,强制登录周期:25,几点登录:1,早间几点签到:4,晚间几点签到:22,几分触发:6
-#!arguments-desc=\n⚠️ 重要提示：如无特殊需求，只需配置账号和密码即可，其他参数使用默认值就能良好运行。不熟悉脚本机制的情况下，请勿随意修改其他配置，以免影响正常使用！\n\n- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n\n- 失败重试次数：仅在确定需要时设置！0表示不重试（推荐），最大3次。每次重试会增加服务器负载，除非特殊情况，建议保持默认值0\n- 自动登录通知：自动登录时是否通知（失败时仍会通知）\n- 自动签到通知：自动签到时是否通知（失败时仍会通知）\n- 强制登录周期：多少天后强制重新登录，默认25天\n- 几点登录：设置几点登录(1点或2点)\n- 早间几点签到：设置几点签到(4点、5点或6点)\n- 晚间几点签到：设置几点签到(22点或23点)\n- 几分触发：设置时间点(0-25)，用于错开高峰期\n手动任务：\n1. 登录：访问 https://wjkc123.com/api/user/login11\n2. 签到：访问 https://wjkc123.com/api/user/sign_use22\n\n
+#!arguments=账号列表:test1@gmail.com|test2@gmail.com,密码列表:12345678,失败重试次数:0,自动登录通知:true,自动签到通知:true,强制登录周期:25,几点登录:1,早间几点签到:4,晚间几点签到:22,几分触发:16,域名:wjkc123.com
+#!arguments-desc=\n⚠️ 重要提示：如无特殊需求，只需配置账号和密码即可，其他参数使用默认值就能良好运行。不熟悉脚本机制的情况下，请勿随意修改其他配置，以免影响正常使用！\n\n- 账号列表：多个邮箱用竖线|分隔\n- 密码列表：多个密码用竖线|分隔，如果只填一个则所有账号共用\n\n- 失败重试次数：仅在确定需要时设置！0表示不重试（推荐），最大3次。每次重试会增加服务器负载，除非特殊情况，建议保持默认值0\n- 自动登录通知：自动登录时是否通知（失败时仍会通知）\n- 自动签到通知：自动签到时是否通知（失败时仍会通知）\n- 强制登录周期：多少天后强制重新登录，默认25天\n- 几点登录：设置几点登录(1点或2点)\n- 早间几点签到：设置几点签到(4点、5点或6点)\n- 晚间几点签到：设置几点签到(22点或23点)\n- 几分触发：设置时间点(0-25)，用于错开高峰期\n- 域名：网站域名，默认wjkc123.com\n手动任务：\n1. 登录：访问 https://{{{域名}}}/api/user/login11\n2. 签到：访问 https://{{{域名}}}/api/user/sign_use22\n\n
 #!arguments-option=失败重试次数:0,1,2,3
 #!arguments-option=自动登录通知:true,false
 #!arguments-option=自动签到通知:true,false
@@ -13,24 +13,25 @@
 #!arguments-option=几点登录:1,2
 #!arguments-option=早间几点签到:4,5,6
 #!arguments-option=晚间几点签到:22,23
-#!arguments-option=几分触发:6,10,15,20,25
+#!arguments-option=几分触发:16,20,25
+#!arguments-option=域名:wjkc123.com
 
 [Script]
 # 手动触发获取token
-wjkcp手动登录 = type=http-request,timeout=240,pattern=^https?:\/\/wjkc123\.com\/api\/user\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}
+wjkcp手动登录 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/api\/user\/login11$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}
 
 # 自动登录（在指定时间执行）
-wjkcp自动登录 = type=cron,cronexp="{{{几分触发}}} {{{几点登录}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}
+wjkcp自动登录 = type=cron,cronexp="{{{几分触发}}} {{{几点登录}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_login.js,argument=accounts={{{账号列表}}}&passwords={{{密码列表}}}&retry={{{失败重试次数}}}&autologinnotify={{{自动登录通知}}}&expire={{{强制登录周期}}}&domain={{{域名}}}
 
 # 手动签到
-wjkcp手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/wjkc123\.com\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}
+wjkcp手动签到 = type=http-request,timeout=240,pattern=^https?:\/\/{{{域名}}}\/api\/user\/sign_use22$,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&domain={{{域名}}}
 
 # 自动签到（在指定时间执行）
-wjkcp自动签到早间 = type=cron,cronexp="{{{几分触发}}} {{{早间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}
-wjkcp自动签到晚间 = type=cron,cronexp="{{{几分触发}}} {{{晚间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}
+wjkcp自动签到早间 = type=cron,cronexp="{{{几分触发}}} {{{早间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
+wjkcp自动签到晚间 = type=cron,cronexp="{{{几分触发}}} {{{晚间几点签到}}} * * *",wake-system=1,timeout=240,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_signin.js,argument=accounts={{{账号列表}}}&autosignnotify={{{自动签到通知}}}&domain={{{域名}}}
 
 # 用户信息响应重写
-wjkcp用户信息 = type=http-response,pattern=^https?:\/\/wjkc123\.com\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wjkcp/wjkcp_user.js
+wjkcp用户信息 = type=http-response,pattern=^https?:\/\/{{{域名}}}\/api\/user\/userinfo$,requires-body=1,script-path=https://raw.githubusercontent.com/mottzz7/crewrite/main/rewrite/wjkcp/wjkcp_user.js
 
 [MITM]
-hostname = %APPEND% wjkc123.com 
+hostname = %APPEND% {{{域名}}} 
