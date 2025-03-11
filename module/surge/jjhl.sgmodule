@@ -8,6 +8,6 @@
 [Script]
 
 极简汇率 = type=http-response,pattern=^https?:\/\/explorer\.tratao\.com\/api\/client\/xtool\/vip,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jjhl/jjhl.js
-
+极简汇率提醒 = type=http-response,pattern=^https?:\/\/explorer\.tratao\.com\/api\/xremind\/alarm\/limit,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jjhl/jjhl.js
 [MITM]
 hostname = %APPEND% explorer.tratao.com
