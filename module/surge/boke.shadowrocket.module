@@ -1,0 +1,17 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/boke.shadowrocket.module
+#!name=Boke Pro
+#!desc=Boke 高级功能解锁 • 突破配额限制 (支持变量)
+
+[Variable]
+host = boke.com
+app = boke
+
+[Script]
+Boke_Quota = type=http-response,pattern=^https://api\.$host/quotas/$app/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app=$app
+
+Boke_Trans = type=http-request,pattern=^https://api\.$host/transcribes/$app/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_request.js
+
+Boke_VIP = type=http-response,pattern=^https://pay\.$host/api/customers/entitlements,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app=$app
+
+[MITM]
+hostname = %APPEND% api.$host, pay.$host 
