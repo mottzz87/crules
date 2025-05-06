@@ -1,18 +1,18 @@
-#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/bokeadapt.sgmodule
-#!name=Boke Pro
-#!desc=Boke 高级功能解锁 • 突破配额限制
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/bokeadapt.sgmodule
+#!name=Boke Adapt Pro
+#!desc=Boke Adapt 高级功能解锁 • 突破配额限制
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=host:boke.com,app:boke
+#!arguments=host:bokeadapt.com,app:bokeadapt
 #!arguments-desc=host: 域名\napp: 应用名称
 
 [Script]
-Boke_Quota = type=http-response,pattern=^https://api\.{{{host}}}/quotas/{{{app}}}/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
+BokeAdapt_Quota = type=http-response,pattern=^https://api.{{{host}}}/quotas/{{{app}}}/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
 
-Boke_Trans = type=http-request,pattern=^https://api\.{{{host}}}/transcribes/{{{app}}}/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_request.js
+BokeAdapt_Trans = type=http-request,pattern=^https://api.{{{host}}}/transcribes/{{{app}}}/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_request.js
 
-Boke_VIP = type=http-response,pattern=^https://pay\.{{{host}}}/api/customers/entitlements,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
+BokeAdapt_VIP = type=http-response,pattern=^https://pay.{{{host}}}/api/customers/entitlements,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
 
 [MITM]
-hostname = %APPEND% api.{{{host}}}, pay.{{{host}}} 
+hostname = %APPEND% *.{{{host}}}
