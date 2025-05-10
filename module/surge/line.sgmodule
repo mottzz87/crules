@@ -1,6 +1,9 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/line.sgmodule
 #!name=LINE去广告
-#!desc=移除 LINE 各类广告，需开启 MITM 与 HTTP/2 支持
-#!author=ChatGPT整理
+#!desc=
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
 
 [Script]
 # 无脚本内容，仅使用规则与重写
