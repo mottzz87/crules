@@ -1,78 +1,28 @@
 #!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/line.sgmodule
 #!name=LINE去广告
-#!desc=
+#!desc=LINE去广告
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
+#!arguments=lineDomain:line.com,lineAppsDomain: line.com
 
 [Script]
-# 无脚本内容，仅使用规则与重写
+# 主页
+LINE广告拦截1 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/ext\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
+LINE广告拦截2 = type=http-response,pattern=^https:\/\/{{{lineDomain}}}\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
 
-[Rule]
-URL-REGEX,^https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\?,REJECT-TINYGIF
-URL-REGEX,^https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image,REJECT-TINYGIF
-URL-REGEX,^https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$,REJECT-DROP
-URL-REGEX,^https:\/\/a\.line\.me\/oa\/v\d\/e$,REJECT-DROP
-URL-REGEX,^https:\/\/a\.line\.me\/cs\/v\d\/oa$,REJECT-DROP
-URL-REGEX,^https:\/\/ad\.line-scdn\.net\/0h,REJECT
-URL-REGEX,^https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$,REJECT
-URL-REGEX,^https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$,REJECT
-URL-REGEX,^https:\/\/gw\.line\.naver\.jp\/tr\/event$,REJECT
-URL-REGEX,^https:\/\/lan\.line\.me\/v1\/line\/ios,REJECT
-URL-REGEX,^https:\/\/legy\.line-apps\.com:443\/ext\/lgfp\/lad\/v1$,REJECT
-URL-REGEX,^https:\/\/legy\.line-apps\.com:443\/ext\/smartch\/banner\/sch\/v1$,REJECT
-URL-REGEX,^https:\/\/legy\.line-apps\.com:443\/tr\/event$,REJECT
-URL-REGEX,^https:\/\/web-mmap-pay\.line-apps\.com\/tw\/liff\/campaign\/v1\/aggregate\/ad\/banner\/,REJECT-TINYGIF
-URL-REGEX,^https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/,REJECT-DROP
-URL-REGEX,^https:\/\/buy\.line\.me\/api\/graphql\?variables,REJECT
-URL-REGEX,^https:\/\/crs-event\.line\.me\/v\d\/imp,REJECT-DROP
-URL-REGEX,^https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$,REJECT-DROP
-URL-REGEX,^https:\/\/obs\.line-scdn\.net\/0hGH\d,REJECT-DROP
-URL-REGEX,^https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$,REJECT-DROP
-URL-REGEX,^https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$,REJECT-TINYGIF
-URL-REGEX,^https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png),REJECT-TINYGIF
-URL-REGEX,^https:\/\/cix\.line-apps\.com\/R4\?,REJECT
-URL-REGEX,^https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json,REJECT
-URL-REGEX,^https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/,REJECT-DROP
-URL-REGEX,^https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/,REJECT-DROP
-URL-REGEX,^https:\/\/sch\.line\.me\/api\/v\d\/ads$,REJECT-DROP
-URL-REGEX,^https:\/\/uts-front\.line-apps\.com\/event$,REJECT-DROP
-URL-REGEX,^https:\/\/uts-front\.line-apps\.com\/settings$,REJECT-DROP
-URL-REGEX,^https:\/\/static\.line-scdn\.net\/ad-sdk\/,REJECT
-URL-REGEX,^https:\/\/nelo2-col\.linecorp\.com\/_store$,REJECT
+# 聊天
+LINE广告拦截3 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/ext\/smartch\/banner\/sch\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line2.js
 
-[Rewrite]
-^https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\? reject-img
-^https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image reject-img
-^https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ reject
-^https:\/\/a\.line\.me\/oa\/v\d\/e$ reject
-^https:\/\/a\.line\.me\/cs\/v\d\/oa$ reject
-^https:\/\/ad\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject-img
-^https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ reject
-^https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ reject
-^https:\/\/gw\.line\.naver\.jp\/tr\/event$ reject
-^https:\/\/lan\.line\.me\/v1\/line\/ios reject
-^https:\/\/legy\.line-apps\.com\/ext\/lgfp\/lad\/v1$ reject
-^https:\/\/legy\.line-apps\.com\/ext\/smartch\/banner\/sch\/v1$ reject
-^https:\/\/legy\.line-apps\.com\/tr\/event$ reject
-^https:\/\/web-mmap-pay\.line-apps\.com\/tw\/liff\/campaign\/v1\/aggregate\/ad\/banner\/ reject-img
-^https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ reject
-^https:\/\/buy\.line\.me\/api\/graphql\?variables reject
-^https:\/\/crs-event\.line\.me\/v\d\/imp reject
-^https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject
-^https:\/\/obs\.line-scdn\.net\/0hGH\d reject
-^https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ reject
-^https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ reject-img
-^https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) reject-img
-^https:\/\/cix\.line-apps\.com\/R4\? reject
-^https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json reject
-^https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ reject
-^https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ reject
-^https:\/\/sch\.line\.me\/api\/v\d\/ads$ reject
-^https:\/\/uts-front\.line-apps\.com\/event$ reject
-^https:\/\/uts-front\.line-apps\.com\/settings$ reject
-^https:\/\/static\.line-scdn\.net\/ad-sdk\/ reject
-^https:\/\/nelo2-col\.linecorp\.com\/_store$ reject
+# Google广告配置拦截
+# Google广告配置拦截 = type=http-response,pattern=^https:\/\/googleads\.g\.doubleclick\.net\/getconfig\/pubsetting\?app_name=jp\.naver\.line.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/google_ads.js
+
+# voom-正在关注
+LINE时间线广告过滤 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/tl\/api\/v\d+\/timeline\/tab\/contents\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/timeline.js
+
+# voom-推荐
+LINE推荐标签广告过滤 = type=http-request,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/tl\/discover\/api\/v1\/recommendTab\/feeds,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/recommend_filter.js
+
 
 [MITM]
-hostname = %APPEND% a.line.me, ad.line-scdn.net, w.line.me, gw.line.naver.jp, lan.line.me, legy.line-apps.com, buy.line.me, crs-event.line.me, obs.line-scdn.net, cix.line-apps.com, d.line-scdn.net, scdn.line-apps.com, web-mmap-pay.line-apps.com, sch.line.me, uts-front.line-apps.com, static.line-scdn.net, nelo2-col.linecorp.com
+hostname = %APPEND% {{{lineDomain}}}, {{{lineAppsDomain}}}
