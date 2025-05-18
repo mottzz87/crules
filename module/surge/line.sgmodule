@@ -4,25 +4,28 @@
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=lineDomain:line.com,lineAppsDomain: line.com
+#!arguments=host1:line1.com,host2: line2.com, host3: line3.com
 
 [Script]
 # 主页
-LINE广告拦截1 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/ext\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
-LINE广告拦截2 = type=http-response,pattern=^https:\/\/{{{lineDomain}}}\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
+LINE广告拦截1 = type=http-response,pattern=^https:\/\/{{{host2}}}:443\/ext\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
+LINE广告拦截2 = type=http-response,pattern=^https:\/\/{{{host1}}}\/lgfp\/lad\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line.js
 
 # 聊天
-LINE广告拦截3 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/ext\/smartch\/banner\/sch\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line2.js
+LINE广告拦截3 = type=http-response,pattern=^https:\/\/{{{host2}}}:443\/ext\/smartch\/banner\/sch\/v1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line2.js
+
+# 搜索热词
+LINE搜索热词拦截 = type=http-response,pattern=^https:\/\/{{{host3}}}\/capi\/news_tab_search\/rolling_keywords$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/line2.js
 
 # Google广告配置拦截
 # Google广告配置拦截 = type=http-response,pattern=^https:\/\/googleads\.g\.doubleclick\.net\/getconfig\/pubsetting\?app_name=jp\.naver\.line.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/google_ads.js
 
 # voom-正在关注
-LINE时间线广告过滤 = type=http-response,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/tl\/api\/v\d+\/timeline\/tab\/contents\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/timeline.js
+LINE时间线广告过滤 = type=http-response,pattern=^https:\/\/{{{host2}}}:443\/tl\/api\/v\d+\/timeline\/tab\/contents\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/timeline.js
 
 # voom-推荐
-LINE推荐标签广告过滤 = type=http-request,pattern=^https:\/\/{{{lineAppsDomain}}}:443\/tl\/discover\/api\/v1\/recommendTab\/feeds,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/recommend_filter.js
+LINE推荐标签广告过滤 = type=http-request,pattern=^https:\/\/{{{host2}}}:443\/tl\/discover\/api\/v1\/recommendTab\/feeds,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/line/recommend_filter.js
 
 
 [MITM]
-hostname = %APPEND% {{{lineDomain}}}, {{{lineAppsDomain}}}
+hostname = %APPEND% {{{host1}}}, {{{host2}}}, {{{host3}}}
