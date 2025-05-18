@@ -1,0 +1,18 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/jmt.sgmodule
+#!name=JMT去广告
+#!desc=JMT去广告
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=host1:jmt.com
+
+[Script]
+# 广告平台API拦截
+JMT广告拦截1 = type=http-request,pattern=^https:\/\/{{{host1}}}\/v1\/ad\/1$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jmt/jmt2.js
+
+# GoogleAds配置拦截
+JMT GoogleAds拦截1 = type=http-response,pattern=^https:\/\/googleads\.g\.doubleclick\.net\/(mads\/gma|getconfig\/pubsetting),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jmt/jmt_googleads.js
+
+
+[MITM]
+hostname = %APPEND% {{{host1}}}
