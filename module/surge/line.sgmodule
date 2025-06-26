@@ -4,7 +4,7 @@
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=host1:line1.com,host2: line2.com, host3: line3.com
+#!arguments=host1: line1.com\nhost2: line2.com\nhost3: line3.com
 
 [Script]
 # 主页
