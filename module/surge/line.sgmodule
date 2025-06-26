@@ -28,4 +28,4 @@ LINE推荐标签广告过滤 = type=http-request,pattern=^https:\/\/{{{host2}}}:
 
 
 [MITM]
-hostname = %APPEND% {{{host1}}}, {{{host2}}}, {{{host3}}}
+hostname = %APPEND% {{{host1}}},{{{host2}}},{{{host3}}}
