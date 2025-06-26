@@ -4,7 +4,7 @@
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=host1:jmt.com
+#!arguments=host1: jmt.com
 
 [Script]
 # 广告平台API拦截
@@ -13,6 +13,13 @@ JMT广告拦截1 = type=http-request,pattern=^https:\/\/{{{host1}}}\/v1\/ad\/1$,
 # GoogleAds配置拦截
 JMT GoogleAds拦截1 = type=http-response,pattern=^https:\/\/googleads\.g\.doubleclick\.net\/(mads\/gma|getconfig\/pubsetting),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jmt/jmt_googleads.js
 
+# Amazon广告配置拦截
+JMT Amazon广告拦截 = type=http-response,pattern=^https:\/\/mads\.amazon-adsystem\.com\/msdk\/getConfig,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jmt/jmt_amazon.js
+
+# Unity广告配置拦截
+JMT Unity广告拦截 = type=http-response,pattern=^https:\/\/configv2\.unityads\.unity3d\.com\/webview\/.*\/release\/config\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/jmt/jmt_unity.js
+
 
 [MITM]
-hostname = %APPEND% {{{host1}}}
+hostname = %APPEND% {{{host1}}}, mads.amazon-adsystem.com, configv2.unityads.unity3d.com, googleads.g.doubleclick.net
+
