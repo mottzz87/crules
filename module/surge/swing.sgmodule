@@ -1,0 +1,13 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/main/module/surge/swing.sgmodule
+#!name=Swing Pro
+#!desc=Swing Pro 订阅解锁
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=host1: swing-pro.com
+
+[Script]
+http-response ^https?://{{{host1}}}/v1/users/ script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/swing/swing.js, requires-body=true, timeout=100, tag=Swing Pro
+
+[MITM]
+hostname = %APPEND% {{{host1}}} 
