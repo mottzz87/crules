@@ -7,7 +7,7 @@
 #!arguments=host1: purchases.ws.pho.to
 
 [Script]
-http-response ^https?://{{{host1}}}/api/v2/apple/verifyReceipt script-path=toonme.js, requires-body=true, timeout=100, tag=ToonMe
+http-response ^https?://{{{host1}}}/api/v2/apple/verifyReceipt script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/toonme/toonme.js, requires-body=true, timeout=100, tag=ToonMe
 
 [MITM]
 hostname = %APPEND% {{{host1}}}
