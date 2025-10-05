@@ -4,11 +4,10 @@
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=host1: purchases.ws.pho.to
 
 [Script]
-http-response ^https?://{{{host1}}}/api/v2/apple/verifyReceipt script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/toonme/toonme.js, requires-body=true, timeout=100, tag=ToonMe
+http-response ^https?://purchases.ws.pho.to/api/v2/apple/verifyReceipt script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/toonme/toonme.js, requires-body=true, timeout=100, tag=ToonMe
 
 [MITM]
-hostname = %APPEND% {{{host1}}}
+hostname = %APPEND% purchases.ws.pho.to
 
