@@ -8,9 +8,9 @@
 #!arguments-desc=host: 域名\napp: 应用名称
 
 [Script]
-BokeAdapt_Quota = type=http-response,pattern=^https://api.{{{host}}}/quotas/{{{app}}}/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
+BokeAdapt_Quota = type=http-response,pattern=^https://[^/]+\.{{{host}}}/quotas/{{{app}}}/(transcribe|ai-explain),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
 
-BokeAdapt_Trans = type=http-request,pattern=^https://api.{{{host}}}/transcribes/{{{app}}}/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_request.js
+BokeAdapt_Trans = type=http-request,pattern=^https://[^/]+\.{{{host}}}/transcribes/{{{app}}}/runners/runpod\?version=2,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_request.js
 
 BokeAdapt_VIP = type=http-response,pattern=^https://pay.{{{host}}}/api/customers/entitlements,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/bokeadapt/boke_response.js,argument=app={{{app}}}
 
