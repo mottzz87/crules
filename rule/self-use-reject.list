@@ -20,9 +20,9 @@ DOMAIN-SUFFIX,otheve.beacon.qq.com
 
 DOMAIN, autoupdate.termius.com
 #mumu
-DOMAIN,mumu.nie.netease.com,REJECT
-DOMAIN,shence.netease.com,REJECT
-DOMAIN,api-pro.mumu.163.com,REJECT
+DOMAIN-SUFFIX,baidu.com,REJECT
+DOMAIN-SUFFIX,163.com,REJECT
+DOMAIN-SUFFIX,netease.com,REJECT
 
 
 # 杂项
