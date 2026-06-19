@@ -8,9 +8,9 @@
 
 [Script]
 # 首页弹窗拦截
-tebr弹窗拦截rule1 = type=http-response,pattern=^https:\/\/[^\/]+\.{{{host1}}}\/api\/v3\/auth\/refresh$,requires-body=1,max-size=0,script-path=dialog1.js
+tebr弹窗拦截rule1 = type=http-response,pattern=^https:\/\/[^\/]+\.{{{host1}}}\/api\/v3\/auth\/refresh$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/tebr/dialog1.js
 
-tebr弹窗拦截rule2 = type=http-response,pattern=^https:\/\/[^\/]+\.{{{host1}}}\/api\/v3\/advertising\/ambassador\/for-app$,requires-body=1,max-size=0,script-path=dialog1.js
+tebr弹窗拦截rule2 = type=http-response,pattern=^https:\/\/[^\/]+\.{{{host1}}}\/api\/v3\/advertising\/ambassador\/for-app$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/tebr/dialog1.js
 
 [MITM]
 hostname = %APPEND% *.{{{host1}}}
