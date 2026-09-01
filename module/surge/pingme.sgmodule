@@ -1,0 +1,28 @@
+#!url=https://raw.githubusercontent.com/mottzz87/crules/refs/heads/main/module/surge/pingme.sgmodule
+#!name=PingMe自动化
+#!desc=PingMe 自动签到+视频奖励 • 支持多账号\n定时任务：每天自动签到两次并自动观看视频领取奖励\n
+#!category=🎉 Mottzz87
+#!author=Mottzz87
+#!homepage=https://github.com/mottzz87/crules
+#!arguments=签到通知:true,抓包通知:true,视频数量:5,视频间隔:8,早间几点:8,晚间几点:20,几分:30,域名:api.pingmeapp.net
+#!arguments-desc=\n⚠️ 重要提示：如无特殊需求，无需修改参数，默认值即可良好运行。\n\n- 签到通知：定时签到完成后是否通知（失败时仍会通知）\n- 抓包通知：抓到新账号时是否通知\n- 视频数量：每次签到后自动观看的视频数量(0-10)，0表示不观看\n- 视频间隔：每个视频之间的间隔秒数\n- 早间几点：早间签到时间(小时)\n- 晚间几点：晚间签到时间(小时)\n- 几分触发：签到触发分钟，用于错开高峰期\n- 域名：API域名，默认api.pingmeapp.net\n使用步骤：\n1. 安装模块并开启 MitM\n2. 打开 PingMe App 触发抓包入库\n3. 等待定时任务自动签到\n手动签到：\n访问 https://{{{域名}}}/app/manual_checkin 触发\n\n
+#!arguments-option=签到通知:true,false
+#!arguments-option=抓包通知:true,false
+#!arguments-option=视频数量:0,3,5,8,10
+#!arguments-option=视频间隔:3,5,8,10,15
+#!arguments-option=早间几点:6,7,8,9,10
+#!arguments-option=晚间几点:18,19,20,21,22
+#!arguments-option=几分:0,15,20,25,30
+
+[Script]
+# 抓包入库（打开 PingMe 自动触发）
+PingMe抓包 = type=http-request,timeout=60,pattern=^https:\/\/{{{域名}}}\/app\/queryBalanceAndBonus,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/pingme/pingme.js,argument=capturenotify={{{抓包通知}}}&domain={{{域名}}}
+
+# 手动签到（访问 https://api.pingmeapp.net/app/manual_checkin 触发）
+PingMe手动签到 = type=http-request,timeout=300,pattern=^https?:\/\/{{{域名}}}\/app\/manual_checkin$,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/pingme/pingme.js,argument=checkinnotify=true&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
+
+# 自动签到（每天两次）
+PingMe自动签到 = type=cron,cronexp="{{{几分}}} {{{早间几点}}},{{{晚间几点}}} * * *",wake-system=1,timeout=300,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/pingme/pingme.js,argument=checkinnotify={{{签到通知}}}&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
+
+[MITM]
+hostname = %APPEND% {{{域名}}}
