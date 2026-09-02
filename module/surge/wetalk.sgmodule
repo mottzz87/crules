@@ -4,10 +4,12 @@
 #!category=🎉 Mottzz87
 #!author=Mottzz87
 #!homepage=https://github.com/mottzz87/crules
-#!arguments=签到通知:true,抓包通知:true,视频数量:5,视频间隔:8,早间几点:8,晚间几点:20,几分:20,域名:api.wetalkapp.com
-#!arguments-desc=\n⚠️ 重要提示：如无特殊需求，无需修改参数，默认值即可良好运行。\n\n- 签到通知：定时签到完成后是否通知（失败时仍会通知）\n- 抓包通知：抓到新账号时是否通知\n- 视频数量：每次签到后自动观看的视频数量(0-10)，0表示不观看\n- 视频间隔：每个视频之间的间隔秒数\n- 早间几点：早间签到时间(小时)\n- 晚间几点：晚间签到时间(小时)\n- 几分触发：签到触发分钟，用于错开高峰期\n- 域名：API域名，默认api.wetalkapp.com\n使用步骤：\n1. 安装模块并开启 MitM\n2. 打开 WeTalk App 触发抓包入库\n3. 等待定时任务自动签到\n手动签到：\n访问 https://{{{域名}}}/app/manual_checkin 触发\n\n
+#!arguments=签到通知:true,抓包通知:true,视频通知:true,自动播放间隔:180,视频数量:5,视频间隔:8,早间几点:8,晚间几点:20,几分:20,域名:api.wetalkapp.com
+#!arguments-desc=\n⚠️ 重要提示：如无特殊需求，无需修改参数，默认值即可良好运行。\n\n- 签到通知：定时签到完成后是否通知（失败时仍会通知）\n- 抓包通知：抓到新账号时是否通知\n- 视频通知：定时播放视频任务完成后是否通知（失败时仍会通知）\n- 自动播放间隔：视频自动播放任务每隔多少分钟触发一次（默认180分钟=3小时，调试时可设小值如5），循环所有账号播放视频\n- 视频数量：每次任务自动观看的视频数量(0-10)，0表示不观看\n- 视频间隔：每个视频之间的间隔秒数\n- 早间几点：早间签到时间(小时)\n- 晚间几点：晚间签到时间(小时)\n- 几分触发：签到触发分钟，用于错开高峰期\n- 域名：API域名，默认api.wetalkapp.com\n使用步骤：\n1. 安装模块并开启 MitM\n2. 打开 WeTalk App 触发抓包入库\n3. 等待定时任务自动签到/播放视频\n手动签到：\n访问 https://{{{域名}}}/app/manual_checkin 触发\n\n
 #!arguments-option=签到通知:true,false
 #!arguments-option=抓包通知:true,false
+#!arguments-option=视频通知:true,false
+#!arguments-option=自动播放间隔:5,10,15,30,60,120,180,360
 #!arguments-option=视频数量:0,3,5,8,10
 #!arguments-option=视频间隔:3,5,8,10,15
 #!arguments-option=早间几点:6,7,8,9,10
@@ -23,6 +25,9 @@ WeTalk手动签到 = type=http-request,timeout=300,pattern=^https?:\/\/{{{域名
 
 # 自动签到（每天两次）
 WeTalk自动签到 = type=cron,cronexp="{{{几分}}} {{{早间几点}}},{{{晚间几点}}} * * *",wake-system=1,timeout=300,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wetalk/wetalk.js,argument=checkinnotify={{{签到通知}}}&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
+
+# 自动播放视频（每隔N分钟，循环所有账号播放，不重复签到）
+WeTalk自动播放 = type=cron,cronexp="*/{{{自动播放间隔}}} * * * *",wake-system=1,timeout=300,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wetalk/wetalk.js,argument=mode=video&videonotify={{{视频通知}}}&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
 
 [MITM]
 hostname = %APPEND% {{{域名}}}
