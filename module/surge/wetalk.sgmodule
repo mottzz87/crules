@@ -26,7 +26,7 @@ WeTalk手动签到 = type=http-request,timeout=300,pattern=^https?:\/\/{{{域名
 # 自动签到（每天两次）
 WeTalk自动签到 = type=cron,cronexp="{{{几分}}} {{{早间几点}}},{{{晚间几点}}} * * *",wake-system=1,timeout=300,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wetalk/wetalk.js,argument=checkinnotify={{{签到通知}}}&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
 
-# 自动播放视频（每隔N分钟，循环所有账号播放，不重复签到）
+# 自动播放视频（每隔N小时，循环所有账号播放，不重复签到）
 WeTalk自动播放 = type=cron,cronexp="0 */{{{自动播放间隔}}} * * *",wake-system=1,timeout=300,script-path=https://raw.githubusercontent.com/mottzz87/crewrite/main/rewrite/wetalk/wetalk.js,argument=mode=video&videonotify={{{视频通知}}}&videonum={{{视频数量}}}&videodelay={{{视频间隔}}}&domain={{{域名}}}
 
 [MITM]
